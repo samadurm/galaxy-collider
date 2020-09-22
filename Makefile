@@ -1,4 +1,5 @@
 INC=./includes
 
 all:
-	nvcc -o collider -I$(INC) src/main.cu -O3 --compiler-options -Wall
+	nvcc -o collider src/main.cu src/planet.cpp -I$(INC) --compiler-options -std=c++11
+
