@@ -4,17 +4,18 @@
 
 int main(){
     srand(time(NULL));
+
     int numPlanets = 10;
-    Planet *galaxy1 = (Planet*)malloc(numPlanets * sizeof(Planet));
- 
-    std::stack<Planet> planets = initPlanets(10, 10, 100);
+    int minMass, maxMass;
+    int dimX, dimY;
+    minMass = 10, maxMass = 100;
 
-    while(planets.size() != 0){
-        Planet planet = planets.top();
-        std::cout << planet.name << " mass of " << planet.mass << " velocity: " << planet.velocity << std::endl;
-        planets.pop();
-    }
+    dimX = 50, dimY = 50;
 
-    free(galaxy1);
+    Planet *galaxy1 = new Planet[dimX * dimY];
+
+    initGalaxy(galaxy1, initPlanets(numPlanets, minMass, maxMass, dimX * dimY), numPlanets, dimX, dimY);
+
+    delete [] galaxy1;
     return 0;
 }
